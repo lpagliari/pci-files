@@ -1,0 +1,13 @@
+Chapter 2:
+	- did anyone get euclidian distance between Lisa Rose and Gene Seymour == 0.29429805508554946, and not 0.14811481 as on the book?
+	- did anyone find it hard as hell to understand Pearson’s coefficient code? I found much easier to go to Wikipedia, get the formula, and implement myself -- not sure if the results were correct, though. :-)
+	- BTW, how do we know we’re implementing correctly this kind of stuff? I mean, just get some real data and create unit tests?
+	- variable names could be much better. I’ve seen this before on my Scientific Initiation(?) project, my initial task was exactly to improve the readability of the code.
+	- the twist to get reverse results is easy to understand why it works, but not to visualize the insight to use it in the future (“To twist things around even more, you can get recommended critics for a movie. Maybe you’re trying to decide whom to invite to a premiere?")
+
+Del.icio.us:
+	- attribute from del.icio.us is not ‘href’ anymore, but ‘url’
+	- error when getting posts from user == ‘’, had to remove it from initialzeUserDict()
+
+==========================================================================================
+

@@ -1,0 +1,9 @@
+- Had to remove feed http://feeds.feedburner.com/hotair/main, was getting error on blog name
+- Code on github is different from the book
+- Couldn't go further PIL library, had problems with it on Mac (no JPG). Went read-only after that to be able to finish the chapter
+- why the "if len(bestmatches[i]) > 0:" on line 260? Is it to avoid changing the cluster to 1st k-cluster when it's already there?
+- number of iterations:
+  - k-cluster: up to 100
+  - h-cluster: n_words
+- why is k-cluster better than h-cluster (Mathematicaly speaking)? Intuitively it is, but what are the calculations to say that?
+- 

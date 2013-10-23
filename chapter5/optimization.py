@@ -65,13 +65,13 @@ def schedulecost(sol):
 
   # Does this solution require an extra day of car rental? That'll be $50!
   if latestarrival>earliestdep: totalprice+=50
-  
+
   return totalprice+totalwait
 
 def randomoptimize(domain,costf):
   best=999999999
   bestr=None
-  for i in range(0,10000):
+  for i in range(0,1000):
     # Create a random solution
     r=[float(random.randint(domain[i][0],domain[i][1])) 
        for i in range(len(domain))]
@@ -85,10 +85,12 @@ def randomoptimize(domain,costf):
       bestr=r 
   return r
 
-def hillclimb(domain,costf):
+def hillclimb(domain, costf, sol=None):
   # Create a random solution
-  sol=[random.randint(domain[i][0],domain[i][1])
-      for i in range(len(domain))]
+  if sol == None:
+    sol=[random.randint(domain[i][0],domain[i][1])
+        for i in range(len(domain))]
+
   # Main loop
   while 1:
     # Create list of neighboring solutions

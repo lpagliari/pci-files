@@ -35,3 +35,10 @@ socialnetwork.crosscount(sol)
 sol = optimization.annealingoptimize(socialnetwork.domain, socialnetwork.crosscount, step = 50, cool = 0.99)
 socialnetwork.crosscount( sol)
 
+#######################
+reload(optimization)
+random_sol = [0, 3, 5, 7, 5, 0, 3, 8, 0, 2, 9, 5]
+s = optimization.hillclimb(domain, optimization.schedulecost, random_sol)
+optimization.schedulecost(s)
+optimization.printschedule(s)
+

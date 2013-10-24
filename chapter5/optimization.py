@@ -11,6 +11,8 @@ people = [('Seymour','BOS'),
 # Laguardia
 destination='LGA'
 
+too_early_to_be_awake = getminutes("08:00")
+
 flights={}
 # 
 for line in file('schedule.txt'):
@@ -66,14 +68,21 @@ def schedulecost(sol):
   # Does this solution require an extra day of car rental? That'll be $50!
   if latestarrival>earliestdep: totalprice+=50
 
-  # Excercise 1: adding $o.50/minute on the plane:
+  # Excercise 1: adding $o.50/minute on the plane + $20 (once) if anyone needs to arrive too early:
   total_time_on_plane = 0
+  has_too_early_arrival = (earliestdep < too_early_to_be_awake)
   for d in range(len(sol)/2):
     origin=people[d][1]
     outbound=flights[(origin,destination)][int(sol[d])]
     returnf=flights[(destination,origin)][int(sol[d+1])]
     total_time_on_plane += getminutes(outbound[1]) - getminutes(outbound[0])
     total_time_on_plane += getminutes(returnf[1]) - getminutes(returnf[0])
+
+    # ... and if anyone arrives too early, adds a penalty
+    if getminutes(outbound[0]) < too_early_to_be_awake:
+      has_too_early_arrival = True
+
+  if has_too_early_arrival: totalprice += 20
 
   return totalprice + totalwait + (0.5 * total_time_on_plane)
 

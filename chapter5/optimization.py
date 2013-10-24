@@ -66,7 +66,16 @@ def schedulecost(sol):
   # Does this solution require an extra day of car rental? That'll be $50!
   if latestarrival>earliestdep: totalprice+=50
 
-  return totalprice+totalwait
+  # Excercise 1: adding $o.50/minute on the plane:
+  total_time_on_plane = 0
+  for d in range(len(sol)/2):
+    origin=people[d][1]
+    outbound=flights[(origin,destination)][int(sol[d])]
+    returnf=flights[(destination,origin)][int(sol[d+1])]
+    total_time_on_plane += getminutes(outbound[1]) - getminutes(outbound[0])
+    total_time_on_plane += getminutes(returnf[1]) - getminutes(returnf[0])
+
+  return totalprice + totalwait + (0.5 * total_time_on_plane)
 
 def randomoptimize(domain,costf):
   best=999999999

@@ -30,3 +30,21 @@ numpredict.crossvalidate(knn1, data)
 numpredict.crossvalidate(knn3, data)
 numpredict.crossvalidate(numpredict.knnestimate, data)
 
+reload(numpredict)
+data = numpredict.wineset2()
+numpredict.crossvalidate(knn1, data)
+numpredict.crossvalidate(knn3, data)
+numpredict.crossvalidate(numpredict.knnestimate, data)
+
+reload(numpredict)
+sdata = numpredict.rescale(data, [10, 10, 0, 0.5])
+numpredict.crossvalidate(knn1, sdata)
+numpredict.crossvalidate(knn3, sdata)
+numpredict.crossvalidate(numpredict.knnestimate, sdata)
+
+#######################################################
+import optimization
+reload(numpredict)
+costf = numpredict.createcostfunction(numpredict.knnestimate, data)
+optimization.annealingoptimize(numpredict.weightdomain, costf, step = 2)
+# result: [10,10,0,6]

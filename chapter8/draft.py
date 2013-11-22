@@ -48,3 +48,9 @@ reload(numpredict)
 costf = numpredict.createcostfunction(numpredict.knnestimate, data)
 optimization.annealingoptimize(numpredict.weightdomain, costf, step = 2)
 # result: [10,10,0,6]
+
+reload(numpredict)
+numpredict.probguess(data, [99, 20], 40, 80)
+numpredict.probguess(data, [99, 20], 80, 120)
+numpredict.probguess(data, [99, 20], 1000, 1200)
+numpredict.probguess(data, [99, 20], 30, 120)

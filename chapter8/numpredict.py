@@ -161,36 +161,36 @@ def createcostfunction(algf,data):
   return costf
 
 weightdomain=[(0,10)]*4
-#
-#def wineset3():
-#  rows=wineset1()
-#  for row in rows:
-#    if random()<0.5:
-#      # Wine was bought at a discount store
-#      row['result']*=0.6
-#  return rows
-#
-#def probguess(data,vec1,low,high,k=5,weightf=gaussian):
-#  dlist=getdistances(data,vec1)
-#  nweight=0.0
-#  tweight=0.0
-#
-#  for i in range(k):
-#    dist=dlist[i][0]
-#    idx=dlist[i][1]
-#    weight=weightf(dist)
-#    v=data[idx]['result']
-#
-#    # Is this point in the range?
-#    if v>=low and v<=high:
-#      nweight+=weight
-#    tweight+=weight
-#  if tweight==0: return 0
-#
-#  # The probability is the weights in the range
-#  # divided by all the weights
-#  return nweight/tweight
-#
+
+def wineset3():
+  rows=wineset1()
+  for row in rows:
+    if random()<0.5:
+      # Wine was bought at a discount store
+      row['result']*=0.6
+  return rows
+
+def probguess(data,vec1,low,high,k=5,weightf=gaussian):
+  dlist=getdistances(data,vec1)
+  nweight=0.0
+  tweight=0.0
+
+  for i in range(k):
+    dist=dlist[i][0]
+    idx=dlist[i][1]
+    weight=weightf(dist)
+    v=data[idx]['result']
+
+    # Is this point in the range?
+    if v>=low and v<=high:
+      nweight+=weight
+    tweight+=weight
+  if tweight==0: return 0
+
+  # The probability is the weights in the range
+  # divided by all the weights
+  return nweight/tweight
+
 #from pylab import *
 #
 #def cumulativegraph(data,vec1,high,k=5,weightf=gaussian):
